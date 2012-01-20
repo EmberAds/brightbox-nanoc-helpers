@@ -179,6 +179,10 @@ module Brightbox
           super({:relevant_articles => posts}.merge(params))
         end
 
+        def atom_feed_uri
+          @site.config[:base_uri] + "/blog/feed.atom"
+        end
+
         def posts_with_tag tag
           posts.select {|post| post[:tags] && post[:tags].include?(tag) }
         end
