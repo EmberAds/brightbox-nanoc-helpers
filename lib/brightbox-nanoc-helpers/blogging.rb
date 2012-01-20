@@ -139,7 +139,7 @@ module Brightbox
         # Generates /blog/author/:name(/page/:i)/ pages, listing posts by each author on as many pages as needed
         def generate_author_archives
           posts_by_authors = posts.inject({}) do |hash, post|
-            author = post[:author] || raise(GenerateError, "post #{post.identifier} has no author set")
+            author = post[:author_name] || raise(GenerateError, "post #{post.identifier} has no author_name set")
             hash[author] ||= []
             hash[author] << post
             hash
