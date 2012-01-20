@@ -12,6 +12,10 @@ module Brightbox
       # 
       # And some rules to process the content of the blog and direct the output to the right place
       # 
+      #   compile '/blog/feed' do
+      #     filter :erb
+      #   end
+      #
       #   compile "/posts/*/" do
       #     filter :kramdown
       #     filter :erb
@@ -20,6 +24,10 @@ module Brightbox
       #     layout "base"
       #   end
       #   
+      #   route "/blog/feed" do
+      #     "/blog/feed.atom"
+      #   end
+      #
       #   route "/posts/*" do
       #     # "/posts/2011-01-01-some-title-here" => "/2011/01/01/some-title-here/index.html"
       #     "/blog/#{item.identifier.split("/", 3).last.gsub(/^(\d+)-(\d+)-(\d+)-(.*)$/, '\1/\2/\3/\4')}index.html"
