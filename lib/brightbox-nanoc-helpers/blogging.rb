@@ -180,7 +180,7 @@ module Brightbox
         end
 
         def atom_feed_uri
-          @site.config[:base_uri] + "/blog/feed.atom"
+          @site.config[:base_url] + "/blog/feed.atom"
         end
 
         def posts_with_tag tag
