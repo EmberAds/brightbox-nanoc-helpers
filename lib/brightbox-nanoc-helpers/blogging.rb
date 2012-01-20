@@ -118,6 +118,7 @@ module Brightbox
           generate_monthly_archives
           generate_author_archives
           generate_tag_archives
+          generate_atom_feed
         end
 
         # Generates /blog(/page/:i)/ pages, listing posts on as many pages as are needed
@@ -160,6 +161,14 @@ module Brightbox
             page_title = "Posts with tag \"#{tag}\""
             paginate_posts_at "/blog/tag/#{slugify(tag)}", posts_with_tag(tag), page_title
           end
+        end
+
+        def generate_atom_feed
+          @items << ::Nanoc3::Item.new(%{<%= atom_feed %>}, {:kind => "atom_feed"}, "/blog/feed")
+        end
+
+        def atom_feed params={}
+          super({:relevant_articles => posts}.merge(params))
         end
 
         def posts_with_tag tag
